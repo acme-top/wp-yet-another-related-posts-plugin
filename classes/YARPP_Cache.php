@@ -459,8 +459,12 @@ abstract class YARPP_Cache {
 	
 		// Sort
 		if ( !isset( $merged_filters[ $tag ] ) ) {
-			ksort($wp_filter[$tag]);
-			$merged_filters[ $tag ] = true;
+			
+			if(is_array($wp_filter[$tag])){
+				ksort($wp_filter[$tag]);
+				$merged_filters[ $tag ] = true;
+			}
+			
 		}
 	
 		reset( $wp_filter[ $tag ] );
